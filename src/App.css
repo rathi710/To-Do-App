@@ -8,6 +8,12 @@ body {
   margin: 2% auto;
 
 }
+.icon{
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+}
+
 /* Style the list items */
 ul li {
   cursor: pointer;

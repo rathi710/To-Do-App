@@ -1,5 +1,12 @@
+import { useState } from "react";
 import "./App.css";
 export const Task = (props) => {
+  const[line,setLine] = useState(false);
+
+  const cutIt = () => {
+    line ? setLine(false) : setLine(true);
+  };
+
   return (
     <>
       <div style={{ maxHeight: "210px", overflowY: "auto" }}>
@@ -16,13 +23,19 @@ export const Task = (props) => {
               padding: "15px",
             }}
           >
-            <div>{props.taskName}</div>
-
-            <i
-              title="Delete"
-              onClick={() => props.handleDelete(props.id)}
-              className="fas fa-trash-alt"
-            />
+            <div style={{textDecoration: line ? "line-through":"none"}} >{props.taskName}</div>
+            <div className="icon">
+                <i
+                  title="Complete"
+                  onClick={cutIt}
+                  className="fas fa-check circle pointer"
+                />
+                <i
+                  title="Delete"
+                  onClick={() => props.handleDelete(props.id)}
+                  className="fas fa-trash-alt"
+                />
+            </div>
           </li>
         </ul>
       </div>
